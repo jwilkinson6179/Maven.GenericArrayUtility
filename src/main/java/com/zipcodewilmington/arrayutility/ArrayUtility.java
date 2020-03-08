@@ -80,7 +80,29 @@ public class ArrayUtility<T> {
 
     public T[] removeValue(T valueToRemove)
     {
-//        T[] = new T[0];
-        return array;
+        Class typeT = array.getClass();
+
+        Integer occurrences = 0;
+        for(T element : array)
+        {
+            if(element.equals(valueToRemove))
+            {
+                occurrences++;
+            }
+        }
+
+        T[] arrayWithValueRemoved = (T[]) Array.newInstance(typeT, array.length - occurrences);
+        Integer idx = 0;
+
+        for(Integer i = 0; i < array.length; i++)
+        {
+            if(!array[i].equals(valueToRemove))
+            {
+                arrayWithValueRemoved[idx] = (T)array[i];
+                idx++;
+            }
+        }
+
+        return arrayWithValueRemoved;
     }
 }

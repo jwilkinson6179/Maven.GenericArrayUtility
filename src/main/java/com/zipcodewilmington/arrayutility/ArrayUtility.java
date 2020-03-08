@@ -91,14 +91,15 @@ public class ArrayUtility<T> {
             }
         }
 
-        T[] arrayWithValueRemoved = (T[]) Array.newInstance(typeT, array.length - occurrences);
+//        T[] arrayWithValueRemoved = (T[]) Array.newInstance(typeT, array.length - occurrences);
+        T[] arrayWithValueRemoved = Arrays.copyOf(array, array.length - occurrences);
         Integer idx = 0;
 
         for(Integer i = 0; i < array.length; i++)
         {
             if(!array[i].equals(valueToRemove))
             {
-                arrayWithValueRemoved[idx] = (T)array[i];
+                arrayWithValueRemoved[idx] = array[i];
                 idx++;
             }
         }
